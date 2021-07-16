@@ -1,6 +1,7 @@
 # Задание 1
 # Дана строка: Abraсadabra
 # Требуется:
+print("Задание 1.")
 
 # 1. Вывести третий символ этой строки.
 s = "Abraсadabra"
@@ -31,6 +32,8 @@ print(s[-1::-2])
 print(len(s))
 
 print()
+print("----------------------------")
+print()
 
 # Задание 2
 # Напишите код, который обрабатывает строковые данные 
@@ -39,6 +42,8 @@ print()
 # Каждое слово после обработки должно быть с заглавной буквы, 
 # только, если первый символ слова - буква, 
 # в случае типа '3amg' код не должен менять буквы.
+print("Задание 2. Вариант решения №1")
+
 s = 'a1 2b  3   abc d3e r2D2'
 naims = s.split(' ')
 i = 0
@@ -49,7 +54,16 @@ while i < len(naims):
     i += 1
 s_with_upper = ' '.join(naims)
 print(s_with_upper)
+print()
 
+# Можно решить другим способом)))
+print("Задание 2. Вариант решения №2")
+s = 'a1 2b  3   abc d3e r2D2'
+s_up = s.title()
+print(s_up)
+
+print()
+print("----------------------------")
 print()
 
 # Задание 3
@@ -63,32 +77,91 @@ print()
 # Строчные буквы, которые можно использовать для пароля: 'abcdefghijklmnopqrstuvwxyz'
 # Заглавные буквы, которые можно использовать для пароля: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 # Спецсимволы, которые можно использовать для пароля: '!@#$%^&*()-+'
+print("Задание 3. Вариант решения №1")
 
-passw = 'qwEe*rtyдьЬ'
-num_sym = '1234567890'
-sp_sym = '!@#$%^&*()-+'
-lo_lett_sym = 'abcdefghijklmnopqrstuvwxyz'
-up_lett_sym = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-num_sym_fl = False
-sp_sym_fl = False
-up_lett_fl = False
-lo_lett_fl = False
+passw = "Q123wer123tY"
+
+dig_sym = "1234567890"
+sp_sym = "!@#$%^&*()-+"
+lo_lett_sym = "abcdefghijklmnopqrstuvwxyz"
+up_lett_sym = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+all = dig_sym + sp_sym + lo_lett_sym + up_lett_sym
+
+dig_sym_fl = sp_sym_fl = lo_lett_fl = up_lett_fl = forb_sym = False
+
 for i in passw:
-    # print(sp_sym.find(i))
-    if sp_sym.find(i) is not -1:
-        print(sp_sym.find(i))
+    if i not in all:
+        print("Ошибка. Запрещенный спецсимвол")
+        forb_sym = True
+        break
+    if i in dig_sym:
+        dig_sym_fl = True
+    if i in sp_sym:
         sp_sym_fl = True
-    if num_sym.find(i) is not -1:
-        print(num_sym.find(i))
-        num_sym_fl = True
-    # print(passw.islower())
-    if lo_lett_sym.find(i) is not -1:
-        print(lo_lett_sym.find(i))
+    if i in lo_lett_sym:
         lo_lett_fl = True
-    if up_lett_sym.find(i) is not -1:
-        print(up_lett_sym.find(i))
+    if i in up_lett_sym:
         up_lett_fl = True
-print(sp_sym_fl)
-print(num_sym_fl)
-print(lo_lett_fl)
-print(up_lett_fl)
+
+if forb_sym == False:
+    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and len(passw) >= 12:
+        print("Сильный пароль.")
+    else:
+        print("Слабый пароль. Рекомендации:", end='')
+        if len(passw) < 12:
+            print(" увеличить число символов - " + str(12 - len(passw)), end='')
+        if dig_sym_fl == False:
+            print(", добавить 1 цифру", end='')
+        if sp_sym_fl == False:
+            print(", добавить 1 спецсимвол", end='')
+        if lo_lett_fl == False:
+            print(", добавить 1 строчную букву", end='')
+        if up_lett_fl == False:
+            print(", добавить 1 заглавную букву", end='')
+
+
+print()
+print("Задание 3. Вариант решения №2")
+passw = "qwerty"
+
+dig_sym = "1234567890"
+sp_sym = "!@#$%^&*()-+"
+lo_lett_sym = "abcdefghijklmnopqrstuvwxyz"
+up_lett_sym = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+all = dig_sym + sp_sym + lo_lett_sym + up_lett_sym
+
+dig_sym_fl = sp_sym_fl = lo_lett_fl = up_lett_fl = forb_sym = False
+
+for i in passw:
+    if i not in all:
+        print("Ошибка. Запрещенный спецсимвол")
+        forb_sym = True
+        break
+    if i in dig_sym:
+        dig_sym_fl = True
+    if i in sp_sym:
+        sp_sym_fl = True
+    if i in lo_lett_sym:
+        lo_lett_fl = True
+    if i in up_lett_sym:
+        up_lett_fl = True
+
+if forb_sym == False:
+    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and len(passw) >= 12:
+        print("Сильный пароль.")
+    else:
+        mes_lst = []
+        print("Слабый пароль. Рекомендации:", end='')
+        if len(passw) < 12:
+            passw_len = " увеличить число символов - " + str(12 - len(passw))
+            mes_lst.append(passw_len)
+        if dig_sym_fl == False:
+            mes_lst.append("добавить 1 цифру")
+        if sp_sym_fl == False:
+            mes_lst.append("добавить 1 спецсимвол")
+        if lo_lett_fl == False:
+            mes_lst.append("добавить 1 строчную букву")
+        if up_lett_fl == False:
+            mes_lst.append("добавить 1 заглавную букву")
+        mes = ", ".join(mes_lst)
+        print(mes)
