@@ -105,7 +105,7 @@ for i in passw:
 
 if forb_sym == False:
     if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and len(passw) >= 12:
-        print("Сильный пароль.")
+        print("Сильный пароль.", end='')
     else:
         print("Слабый пароль. Рекомендации:", end='')
         if len(passw) < 12:
@@ -118,6 +118,7 @@ if forb_sym == False:
             print(", добавить 1 строчную букву", end='')
         if up_lett_fl == False:
             print(", добавить 1 заглавную букву", end='')
+    print()
 
 
 print()
