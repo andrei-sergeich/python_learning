@@ -30,14 +30,26 @@ print()
 # все элементы списка, которые больше предыдущего, в виде отдельного списка.
 print("Задание 2. Вариант решения №1")
 
-dig_lst = [90, 45, 3, 43]
+dig_lst = [1, 5, 1, 5, 1]
 more_lst = []
 i = 1
 while i < len(dig_lst):
-# for i in dig_lst:
     if dig_lst[i] > dig_lst[i - 1]:
-        more_lst.append(i)
+        more_lst.append(dig_lst[i])
     i += 1
+print(*more_lst, sep=", ")
+
+print()
+print("Задание 2. Вариант решения №2")
+
+dig_lst = [ 1, 2, 3, 4, 5]
+more_lst = []
+i = 1
+# while i < len(dig_lst):
+for i in range(1, len(dig_lst)):
+    if dig_lst[i] > dig_lst[i - 1]:
+        more_lst.append(dig_lst[i])
+    # i += 1
 print(*more_lst, sep=", ")
 
 print()
