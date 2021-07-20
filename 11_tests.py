@@ -58,9 +58,9 @@ my_dict = {'Hello' : 'Hi', 'Bye' : 'Goodbye', 'List' : 'Array'}
 my_value = input("Введите значение: ")
 rev_dict = dict((v, k) for k, v in my_dict.items())
 
-for key in my_dict:
-    if my_dict[key] == my_value:
-        print(key)
+for key in rev_dict:
+    if key == my_value:
+        print(rev_dict.get(key))
 
 
 print()
