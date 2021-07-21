@@ -1,5 +1,5 @@
 # Задание 1
-# Напишите программу, которая принимает арифметическое выражение 
+# Напишите программу, которая принимает арифметическое выражение
 # в качестве аргумента и выводит результат этого выражения.
 # Программа должна поддерживать следующие арифметические операции:
 # +, -, /, *, %(получение процента от числа),
@@ -37,7 +37,7 @@ def expression(x, s, y):
             else:
                 return x * 1 / 100
     else:
-        return ("Неверный знак операции")
+        return "Неверный знак операции"
 
 
 x = int(input("x = "))
@@ -103,10 +103,10 @@ def parsing(exp_str):
 
 
 def calculating(expression):
-    ''' Функция calculating(expression) принимает
-        список в качестве аргумента,
+    ''' Функция calculating(expression)
+        принимает список в качестве аргумента,
         и выполняет математическое действие,
-        возвращает список результат вычислений
+        возвращает результат вычислений
     '''
     x = expression[0]
     action = expression[1]
@@ -139,3 +139,92 @@ if type(expression) is not str:
     print(result)
 else:
     print(expression)
+
+
+print()
+print("Задание 1. Вариант решения № 3")
+
+
+def calculating(x, action, y=None):
+    ''' Функция calculating(x, action, y=None)
+        принимает список в качестве аргумента,
+        и выполняет математическое действие,
+        возвращает результат вычислений
+    '''
+
+    if y:
+        if action == '+':
+            return x + y
+        elif action == '-':
+            return x - y
+        elif action == '/':
+            return x / y
+        elif action == '*':
+            return x * y
+        elif action == '**':
+            return x ** y
+        elif action == '%':
+            return (x * y) / 100
+    else:
+        if action == '**':
+            return x ** 2
+        elif action == '%':
+            return x / 100
+
+
+def parsing(expr_str):
+    ''' Функция parsing(exp_str) принимает
+        арифметическое выражение в качестве
+        аргумента, находит в нем числа и
+        математическое действие, которое
+        необходимо выполнить с этими числами,
+        вызывает функцию calculating(x, action, y=None)
+        и возвращает результат работы функции calculating
+    '''
+    idx = 0
+    x = ''
+    action = ''
+    y = ''
+
+    while expr_str[idx].isdigit():
+        x += expr_str[idx]
+        idx += 1
+    if expr_str[idx] == '+':
+        action += expr_str[idx]
+        idx += 1
+    elif expr_str[idx] == '-':
+        action += expr_str[idx]
+        idx += 1
+    elif expr_str[idx] == '-':
+        action += expr_str[idx]
+        idx += 1
+    elif expr_str[idx] == '/':
+        action += expr_str[idx]
+        idx += 1
+    elif expr_str[idx] == '%':
+        action += expr_str[idx]
+        idx += 1
+    elif expr_str[idx] == '*':
+        if idx + 1 < len(expr_str) and expr_str[idx + 1] == '*':
+            action += expr_str[idx] + expr_str[idx + 1]
+            idx += 2
+        else:
+            action += expr_str[idx]
+            idx += 1
+    else:
+        return "Неверный знак операции"
+    while idx < len(expr_str) and expr_str[idx].isdigit():
+        y += expr_str[idx]
+        idx += 1
+    x = int(x)
+    if len(y) > 0:
+        y = int(y)
+        res_of_calc = calculating(x, action, y)
+    else:
+        res_of_calc = calculating(x, action)
+    return res_of_calc
+
+
+exp_str = input("Введите выражение: ")
+result = parsing(exp_str)
+print(result)
