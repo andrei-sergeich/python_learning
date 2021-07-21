@@ -25,7 +25,8 @@ print(s[1::2])
 # 7. Вывести все символы в обратном порядке.
 print(s[::-1])
 
-# 8. Вывести все символы строки через один в обратном порядке, начиная с последнего.
+# 8. Вывести все символы строки через один в обратном порядке,
+# начиная с последнего.
 print(s[-1::-2])
 
 # 9. Вывести длину данной строки.
@@ -46,18 +47,21 @@ print("Задание 2. Вариант решения №1")
 
 s = 'a1 2b  3   abc d3e r2D2'
 naims = s.split(' ')
+
 i = 0
 while i < len(naims):
     if naims[i]:
         if naims[i][0].isalpha():
             naims[i] = naims[i][0].upper() + naims[i][1:]
     i += 1
+
 s_with_upper = ' '.join(naims)
 print(s_with_upper)
 print()
 
 # Можно решить другим способом)))
 print("Задание 2. Вариант решения №2")
+
 s = 'a1 2b  3   abc d3e r2D2'
 s_up = s.title()
 print(s_up)
@@ -103,26 +107,28 @@ for i in passw:
     if i in up_lett_sym:
         up_lett_fl = True
 
-if forb_sym == False:
-    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and len(passw) >= 12:
+if forb_sym is False:
+    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and \
+            len(passw) >= 12:
         print("Сильный пароль.", end='')
     else:
         print("Слабый пароль. Рекомендации:", end='')
         if len(passw) < 12:
             print(" увеличить число символов - " + str(12 - len(passw)), end='')
-        if dig_sym_fl == False:
+        if dig_sym_fl is False:
             print(", добавить 1 цифру", end='')
-        if sp_sym_fl == False:
+        if sp_sym_fl is False:
             print(", добавить 1 спецсимвол", end='')
-        if lo_lett_fl == False:
+        if lo_lett_fl is False:
             print(", добавить 1 строчную букву", end='')
-        if up_lett_fl == False:
+        if up_lett_fl is False:
             print(", добавить 1 заглавную букву", end='')
     print()
 
 
 print()
 print("Задание 3. Вариант решения №2")
+
 passw = "qwerty"
 
 dig_sym = "1234567890"
@@ -147,8 +153,9 @@ for i in passw:
     if i in up_lett_sym:
         up_lett_fl = True
 
-if forb_sym == False:
-    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and len(passw) >= 12:
+if forb_sym is False:
+    if dig_sym_fl == sp_sym_fl == up_lett_fl == lo_lett_fl == True and \
+            len(passw) >= 12:
         print("Сильный пароль.")
     else:
         mes_lst = []
@@ -156,13 +163,13 @@ if forb_sym == False:
         if len(passw) < 12:
             passw_len = " увеличить число символов - " + str(12 - len(passw))
             mes_lst.append(passw_len)
-        if dig_sym_fl == False:
+        if dig_sym_fl is False:
             mes_lst.append("добавить 1 цифру")
-        if sp_sym_fl == False:
+        if sp_sym_fl is False:
             mes_lst.append("добавить 1 спецсимвол")
-        if lo_lett_fl == False:
+        if lo_lett_fl is False:
             mes_lst.append("добавить 1 строчную букву")
-        if up_lett_fl == False:
+        if up_lett_fl is False:
             mes_lst.append("добавить 1 заглавную букву")
         mes = ", ".join(mes_lst)
         print(mes)
