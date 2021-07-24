@@ -228,3 +228,38 @@ def parsing(expr_str):
 exp_str = input("Введите выражение: ")
 result = parsing(exp_str)
 print(result)
+
+
+print()
+print("Задание 1. Вариант решения № 4")
+
+def calc(expression):
+    for i in expression:
+        if i == ' ':
+            expression = expression.replace(' ', '')
+    if '+' in expression:
+        var = expression.split('+')
+        print(int(var[0]) + int(var[-1]))
+    elif '-' in expression:
+        var = expression.split('-')
+        print(int(var[0]) - int(var[-1]))
+    elif '/' in expression:
+        var = expression.split('/')
+        print(int(var[0]) / int(var[-1]))
+    elif '*' in expression and '**' not in expression:
+        var = expression.split('*')
+        print(int(var[0]) * int(var[-1]))
+    elif '%' in expression:
+        var = expression.split('%')
+        print(int(var[0]) / 100)
+    elif '**' in expression:
+        var = expression.split('**')
+        if var[-1] == '':
+            print(int(var[0]) ** 2)
+        else:
+            print(int(var[0]) ** int(var[-1]))
+
+calc('1+ 9')
+calc('100%')
+calc('4**')
+calc('9 ** 3')
